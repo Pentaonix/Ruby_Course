@@ -49,3 +49,4 @@ olympic.each do |olp|
   end
   puts "-------------------------"
 end
+

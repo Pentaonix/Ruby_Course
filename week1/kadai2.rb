@@ -44,3 +44,6 @@ olympic.each do |year|
   puts year[:year] + year[:city]
   puts "-------------------------"
 end
+
+
+
