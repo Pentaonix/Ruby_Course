@@ -1,51 +1,43 @@
-olympic = [
-  {
-    year: '1896年',
-    city: "アテネ"
-  },
-  {
-    year: '1900年',
-    city: "パリ"
-  },
-  {
-    year: '1904年',
-    city: "セントルイス"
-  },
-  {
-    year: '1908年',
-    city: "ロンドン"
-  },
-  {
-    year: '1912年',
-    city: "ストックホルム"
-  },
-  {
-    year: '1916年',
-    city: "ベルリン",
-    fact: "第一次世界大戦で中止"
-  },
-  {
-    year: '1920年',
-    city: "アントワープ"
-  },
-  {
-    year: '1924年',
-    city: "パリ",
-    fact: "同じ都市での２回目の開催は初"
-  },
-  {
-    year: '1928年',
-    city: "アムステルダム"
-  },
-  {
-    year: '1932年',
-    city: "ロサンゼルス"
-  },
-]
-olympic.each do |olp|
-  puts olp[:year] + olp[:city]
-  if olp[:fact] != nil
-    puts "豆知識: #{olp[:fact]}"
+class Menu
+  attr_accessor :name
+  attr_accessor :price
+  def initialize(name, price)
+    @name = name
+    @price = price
   end
-  puts "-------------------------"
+  def info
+    return "#{@name} #{@price}vnd"
+  end
+end
+
+
+class Drink < Menu
+  attr_accessor :size
+  def initialize(name,price)
+    super(name,price)
+    @size = size
+  end
+  def info
+    return "#{@name} is #{@price}vnd (#{@size} size)"
+  end
+end
+
+menu1 = Menu.new("Pho",30000)
+menu2 = Menu.new("Bun cha",40000)
+menu3 = Menu.new("Banh mi",20000)
+
+drink1 = Drink.new("Coca", 15000)
+drink1.size = "S"
+drink2 = Drink.new("Fanta", 10000)
+drink2.size = "XL"
+
+menus = []
+menus.push(menu1)
+menus.push(menu2)
+menus.push(menu3)
+menus.push(drink1)
+menus.push(drink2)
+
+menus.each do |menus|
+  puts "#{menus.info}"
 end

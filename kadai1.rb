@@ -1,19 +1,17 @@
-year = gets.to_i 
+class Menu
+  attr_accessor :name
+  attr_accessor :price
 
-if year<1896 || year == 1916 || year == 1940 || year == 1944 || year == 2020
-  puts"#{year}年は夏季オリンピックが開催されませんでした。"
-else
-  if year>2020
-    if year%4 == 0
-      puts"#{year}年は夏季オリンピックが開催されます。"
-    else
-      puts"#{year}年は夏季オリンピックが開催されません。"
+  def get_total_price(count)
+    total_price = count * price
+    if count >= 3
+      total_price = total_price - 10000
     end
-  else
-    if year%4 == 0
-      puts"#{year}年は夏季オリンピックが開催されました。"
-    else
-      puts"#{year}年は夏季オリンピックが開催されませんでした。"
-    end
+    return puts "「#{@name} #{total_price}vnd」"
   end
 end
+
+menu1 = Menu.new
+menu1.name = "bun cha"
+menu1.price = 20000
+menu1.get_total_price(10)

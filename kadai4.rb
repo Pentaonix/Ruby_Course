@@ -1,15 +1,53 @@
-number = gets.to_i
-
-if number != 0
-  if number%14 == 0
-    puts"14の倍数です"
-  elsif number%2 == 0
-    puts"2の倍数です"
-  elsif number%7 == 0
-    puts"7の倍数です"
-  else
-    puts"2の倍数でも7の倍数でもありません"
+class Menu
+  attr_accessor :name
+  attr_accessor :price
+  def initialize(name, price)
+    @name = name
+    @price = price
   end
+  def info
+    return "#{@name} #{@price}vnd"
+  end
+end
+
+
+class Drink < Menu
+  attr_accessor :size
+  def initialize(name,price)
+    super(name,price)
+    @size = size
+  end
+  def info
+    return "#{@name} is #{@price}vnd (#{@size} size)"
+  end
+end
+
+menu1 = Menu.new("Pho",30000)
+menu2 = Menu.new("Bun cha",40000)
+menu3 = Menu.new("Banh mi",20000)
+
+drink1 = Drink.new("Coca", 15000)
+drink1.size = "S"
+drink2 = Drink.new("Fanta", 10000)
+drink2.size = "XL"
+
+menus = []
+menus.push(menu1)
+menus.push(menu2)
+menus.push(menu3)
+menus.push(drink1)
+menus.push(drink2)
+
+
+menus.each_with_index do |menus,index|
+  print "#{index+1} "
+  puts menus.info
+end
+
+num = gets.to_i
+if num <= 0 || num > menus.length
+  puts "Wrong choice, please try again"
 else
-  puts"整数ではありません"
+  puts "Ten mat hang: #{menus[num-1].name}"
+  puts "Gia mat hang: #{menus[num-1].price}vnd"
 end
